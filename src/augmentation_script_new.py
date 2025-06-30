@@ -41,12 +41,13 @@ def process_2_blur_bright_rotate(image, bboxes):
     ], bbox_params=A.BboxParams(format='yolo'))(image=image, bboxes=bboxes)
 
 def process_3_noise_bright_rotate(image, bboxes):
-    """Gaussian Noise + brightness + rotation"""
+    """Subtle Gaussian Noise + reduced brightness + rotation"""
     return A.Compose([
-        # Gaussian Noise (very subtle)
-        A.GaussNoise(var_limit=(10, 30), p=1.0),
+        # Reduced Gaussian Noise (very subtle)
+        A.GaussNoise(var_limit=(5, 15), p=1.0),  # Reduced from (10, 30)
         
-        A.RandomBrightnessContrast(brightness_limit=0.2, p=1.0),
+        # Reduced brightness adjustment
+        A.RandomBrightnessContrast(brightness_limit=0.1, p=1.0),  # Reduced from 0.2
         A.Affine(rotate=(-10, 10), p=1.0),
         A.PadIfNeeded(*TARGET_SIZE, border_mode=cv2.BORDER_CONSTANT, value=0)
     ], bbox_params=A.BboxParams(format='yolo'))(image=image, bboxes=bboxes)
