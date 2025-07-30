@@ -1,4 +1,9 @@
 # AISOC 2025
+ **Project 6**: A computer vision tool that detects and classifies vehicles at night, designed to improve traffic monitoring in low-light conditions.
+
+Objective 1: Dataset link: https://huggingface.co/datasets/SanyaG/VehicleDetectionftAISOC25
+Objective 2 : Vehicle Detection in low light: Achieved via custom model based on YOLOv8 architecture with Box Precision of 0.899
+Objective 3 : Number Plate detection and reading: implemented using easy ocr
 
 ## ⚙️ Guidelines
 
